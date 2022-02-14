@@ -63,7 +63,6 @@ resource "aws_instance" "this" {
     volume_type = "gp3"
     volume_size = 20
   }
-
   user_data = templatefile("${path.module}/init.sh.tpl", {
     ssh_keys = var.ssh_keys
     token = sdm_node.this[count.index].gateway[0].token
