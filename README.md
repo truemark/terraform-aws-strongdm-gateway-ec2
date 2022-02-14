@@ -7,7 +7,6 @@ Example Usage
 ```hcl
 module "gateway" {
   source  = "truemark/strongdm-gateway-ec2/aws"
-  version = "0.0.1"
   name = "mygateway"
   zone = "example.com"
   ssh_allowed_cidr_blocks = local.ssh_allowed
