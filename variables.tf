@@ -90,3 +90,21 @@ variable "ssh_keys" {
   type = list(string)
   description = "List of SSH public keys to be added to the authorized_keys file"
 }
+
+variable "tags" {
+  default = {}
+  type = map(string)
+  description = "Additional tags for all resources"
+}
+
+variable "instance_tags" {
+  default = {}
+  type = map(string)
+  description = "Additional tags for the EC2 instance"
+}
+
+variable "security_group_tags" {
+  default = {}
+  type = map(string)
+  description = "Additional tags for the Security group"
+}

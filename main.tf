@@ -47,6 +47,9 @@ resource "aws_security_group" "this" {
     cidr_blocks = var.egress_cidr_blocks
     ipv6_cidr_blocks = var.egress_cidr_blocks_ipv6
   }
+  tags = merge(var.security_group_tags, merge(var.tags, {
+    Name = var.name
+  }))
 }
 
 resource "aws_instance" "this" {
@@ -68,6 +71,9 @@ resource "aws_instance" "this" {
     token = sdm_node.this[count.index].gateway[0].token
   })
   depends_on = [sdm_node.this]
+  tags = merge(var.instance_tags, merge(var.tags, {
+    Name = var.name
+  }))
 }
 
 data "aws_route53_zone" "this" {
