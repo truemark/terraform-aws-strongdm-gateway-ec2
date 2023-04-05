@@ -17,6 +17,7 @@ echo "${k}" >> /home/ubuntu/.ssh/authorized_keys
 #------------------------------------------------------------------------------
 apt-get -qq update && apt-get install -qq unzip
 cd /usr/local/bin
-curl -J -O -L https://app.strongdm.com/releases/cli/linux && unzip sdmcli* && rm -f sdmcli*
+URL="$(curl -s 'https://app.strongdm.com/release?os=linux&arch=arm64&software=sdm-cli&variant=&version=truemark' | jq -r .url)"
+curl -J -O -L "$URL" && unzip sdmcli* && rm -f sdmcli*
 export SDM_RELAY_TOKEN="${token}"
 ./sdm install --relay --user ubuntu

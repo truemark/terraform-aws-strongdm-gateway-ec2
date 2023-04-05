@@ -10,7 +10,7 @@ variable "create" {
 }
 
 variable "instance_type" {
-  default = "t3a.medium"
+  default = "t4g.small"
   type = string
   description = "EC2 instance type to use for the gateway"
 }
@@ -107,4 +107,40 @@ variable "security_group_tags" {
   default = {}
   type = map(string)
   description = "Additional tags for the Security group"
+}
+
+variable "root_volume_size" {
+  default = 20
+  type = number
+  description = "Size of the root volume"
+}
+
+variable "enable_ssm" {
+  type = bool
+  default = true
+  description = "Enable or disable SSM on this instance"
+}
+
+variable "instance_suffix" {
+  type = string
+  default = "-strongdm"
+  description = "The suffix to use on the name when creating the EC2 instance"
+}
+
+variable "ami_name_filters" {
+  type = list(string)
+  default = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-arm64-server-*"]
+  description = "Name filter to use when searching for AMIs"
+}
+
+variable "ami_owners" {
+  type = list(string)
+  default = ["099720109477"]
+  description = "Owner filter to use when searching for AMIs"
+}
+
+variable "force_deploy" {
+  type = bool
+  default = false
+  description = "Forcibly re-deploy the EC2 instance."
 }
