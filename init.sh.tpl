@@ -15,7 +15,7 @@ echo "${k}" >> /home/ubuntu/.ssh/authorized_keys
 #------------------------------------------------------------------------------
 # Strong DM
 #------------------------------------------------------------------------------
-apt-get -qq update && apt-get install -qq unzip
+apt-get -qq update && apt-get install -qq unzip jq
 cd /usr/local/bin
 URL="$(curl -s 'https://app.strongdm.com/release?os=linux&arch=arm64&software=sdm-cli&variant=&version=truemark' | jq -r .url)"
 curl -J -O -L "$URL" && unzip sdmcli* && rm -f sdmcli*
