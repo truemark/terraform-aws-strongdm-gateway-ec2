@@ -3,11 +3,11 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 3.15"
+      version = ">= 4.36.1"
     }
     sdm = {
       source  = "strongdm/sdm"
-      version = "1.0.39"
+      version = "3.3.3"
     }
   }
 }
